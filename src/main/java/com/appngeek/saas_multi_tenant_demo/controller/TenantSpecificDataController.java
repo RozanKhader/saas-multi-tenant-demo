@@ -28,18 +28,21 @@ public class TenantSpecificDataController {
 	@Autowired
 	private TenantResolver tenantResolver;
 
-	@GetMapping("/find/tenantId")
+	@GetMapping("/find/{tenantId}")
 	public List<TenantSpecificData> findByCurrentTenantId(@PathVariable Long tenantId) {
+
 		TenantContext.setCurrentTenant(tenantId);
+		System.out.println("hi0 "+TenantContext.getCurrentTenant());
+
 		return tenantSpecificDataRepository.findByCurrentTenantId(tenantId);
 	}
-
-	@GetMapping("/find/username")
+/**
+	@GetMapping("/find/{username}")
 	public List<TenantSpecificData> findByUsername(@PathVariable String username) {
 		Long tenantId = tenantResolver.findTenantIdByUsername(username);
 		TenantContext.setCurrentTenant(tenantId);
 		return tenantSpecificDataRepository.findByUsername(username);
-	}
+	}**/
 
 	/**
 	 * Push data to specific tenant db based on tenantId passed as path variable

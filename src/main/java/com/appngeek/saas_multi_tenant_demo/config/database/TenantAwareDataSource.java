@@ -41,11 +41,15 @@ public class TenantAwareDataSource extends AbstractRoutingDataSource {
 
 	@Override
 	protected Object determineCurrentLookupKey() {
+
+		System.out.println("hi1 "+TenantContext.getCurrentTenant());
 		return TenantContext.getCurrentTenant();
 	}
 
 	@Override
 	protected DataSource determineTargetDataSource() {
+		System.out.println("hi2 "+TenantContext.getCurrentTenant());
+
 		Long tenantId = (Long) determineCurrentLookupKey();
 		if (tenantId == null)
 			return masterDataSource;
