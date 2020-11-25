@@ -1,4 +1,4 @@
-package com.appngeek.saas_multi_tenant_demo.domain;
+package com.appngeek.saas_multi_tenant_demo.domain.tenantDomain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

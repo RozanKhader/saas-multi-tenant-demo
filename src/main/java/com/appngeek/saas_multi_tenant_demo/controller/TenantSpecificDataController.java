@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.appngeek.saas_multi_tenant_demo.config.database.TenantResolver;
-import com.appngeek.saas_multi_tenant_demo.domain.TenantSpecificData;
+import com.appngeek.saas_multi_tenant_demo.domain.tenantDomain.TenantSpecificData;
 import com.appngeek.saas_multi_tenant_demo.repo.TenantSpecificDataRepository;
-import com.appngeek.saas_multi_tenant_demo.repo.util.TenantContext;
+import com.appngeek.saas_multi_tenant_demo.Util.TenantContext;
 
 @RestController
 @RequestMapping("/api/")

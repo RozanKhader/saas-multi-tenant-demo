@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
-import com.appngeek.saas_multi_tenant_demo.repo.util.DBUtil;
-import com.appngeek.saas_multi_tenant_demo.repo.util.TenantContext;
+import com.appngeek.saas_multi_tenant_demo.Util.DBUtil;
+import com.appngeek.saas_multi_tenant_demo.Util.TenantContext;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -42,13 +42,11 @@ public class TenantAwareDataSource extends AbstractRoutingDataSource {
 	@Override
 	protected Object determineCurrentLookupKey() {
 
-		System.out.println("hi1 "+TenantContext.getCurrentTenant());
 		return TenantContext.getCurrentTenant();
 	}
 
 	@Override
 	protected DataSource determineTargetDataSource() {
-		System.out.println("hi2 "+TenantContext.getCurrentTenant());
 
 		Long tenantId = (Long) determineCurrentLookupKey();
 		if (tenantId == null)

@@ -24,7 +24,6 @@ public class TenantResolver {
 	}
 
 	public String findDataBaseNameByTenantId(Long tenantId) {
-		System.out.println(tenantId);
 
 		if (tenantId == null)
 			return null;

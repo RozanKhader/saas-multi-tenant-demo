@@ -1,4 +1,4 @@
-package com.appngeek.saas_multi_tenant_demo.repo.util;
+package com.appngeek.saas_multi_tenant_demo.Util;
 
 import java.net.URI;
 

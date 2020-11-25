@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.appngeek.saas_multi_tenant_demo.domain.TenantSpecificData;
+import com.appngeek.saas_multi_tenant_demo.domain.tenantDomain.TenantSpecificData;
 
 @Repository
 public interface TenantSpecificDataRepository extends JpaRepository<TenantSpecificData, Long> {
