@@ -218,8 +218,8 @@ public class CustomerController {
                 if(row0 != null && row != null){
 
                     if(row.getCell(1)==null){
-                        Generators key = new Generators().setLength(9);
-                        customer.setCustomerId("921"+key.generateId());
+                        Generators posKey = new Generators().setLength(9);
+                        customer.setCustomerId("921"+posKey.generateId());
                     }
                     else {
                         customer.setCustomerId(String.valueOf(row.getCell(0)));

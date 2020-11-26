@@ -13,19 +13,19 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = false)
 @ToString
 @Entity
-@Table(name = "keys")
-public class Keys {
+@Table(name = "tenant_keys")
+public class TenantKeys {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     @Column(name = "current_tenant_id")
     private Long currentTenantId;
 
-    private String key;
+    private String posKey;
 
 
-    public Keys(Long currentTenantId, String key) {
+    public TenantKeys(Long currentTenantId, String posKey) {
         this.currentTenantId = currentTenantId;
-        this.key = key;
+        this.posKey = posKey;
     }
 }

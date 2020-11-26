@@ -40,7 +40,11 @@ public class User extends Object {
     private String posKey;
     @Column(columnDefinition="bigint(20) DEFAULT 0")
     private long branchId;
+
+    @Enumerated(EnumType.STRING)
+    @Column( columnDefinition = "VARCHAR(255) default 'USER'")
     private UserType userType;
+
     private String salt;
     private String password;
     private boolean enable;
@@ -79,4 +83,12 @@ public class User extends Object {
         }
     }
 
+
+    public User(String posKey, long deviceId,UserType userType, boolean enable,long branchId) {
+        this.posKey = posKey;
+        this.deviceId=deviceId;
+        this.userType = userType;
+        this.enable = enable;
+        this.branchId=branchId;
+    }
 }

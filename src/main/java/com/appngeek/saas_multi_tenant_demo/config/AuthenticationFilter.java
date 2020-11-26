@@ -44,7 +44,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         String path = (request).getRequestURI();
 
 
-        if (!(path.contains("/login")|| path.contains("/Users"))) {
+        if (!(path.contains("/login")|| path.contains("/Users") || path.contains("/CompanyDevices"))) {
             // 2. validate the header and check the prefix
             if (header == null) {
                 chain.doFilter(request, response);        // If not valid, go to the next filter.

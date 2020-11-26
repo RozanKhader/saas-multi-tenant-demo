@@ -19,5 +19,9 @@ public interface UserRepository extends JpaRepository<User,Long> {
     User findByUsername(String username);
     @Query(value = "SELECT * FROM user WHERE  id=? ", nativeQuery = true)
     User findById(long id);
+
+    @Transactional
+    @Query(value = "select MAX(device_id) FROM  user where user_type='POS'", nativeQuery = true)
+    Long getMaxPosId();
 }
 
