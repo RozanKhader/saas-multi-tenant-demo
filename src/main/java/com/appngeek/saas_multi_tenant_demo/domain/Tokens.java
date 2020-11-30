@@ -1,5 +1,7 @@
 package com.appngeek.saas_multi_tenant_demo.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,5 +39,15 @@ public class Tokens {
         this.creationDate=creationDate;
         this.expirationDate=expirationDate;
 
+    }
+
+    public  String toString(){
+
+        try {
+            return new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return  "";
     }
 }

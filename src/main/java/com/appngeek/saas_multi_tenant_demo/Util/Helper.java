@@ -3,6 +3,7 @@ package com.appngeek.saas_multi_tenant_demo.Util;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 
 import static com.mongodb.util.Util.toHex;
 
@@ -32,6 +33,13 @@ public class Helper
 
         return hashPassowrd.matches(hashPassword(password, salt));
 
+    }
+
+    public static byte[] getSalt() throws NoSuchAlgorithmException {
+        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+        byte[] salt = new byte[16];
+        sr.nextBytes(salt);
+        return salt;
     }
 
 }

@@ -9,31 +9,24 @@ import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by Win8.1 on 27/05/2018.
  */
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
+public class Credentials implements Serializable {
 
-public class Poses {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String posID;
-    private  String companyName;
-    private String posPass;
-    private  String key;
-    private long deviceId;
+    long id;
+    String companyName;
+    String posPass;
+    String posID;
+    long SyncNumber;
 
     public String toString(){
 
@@ -45,7 +38,5 @@ public class Poses {
         }
         return  "";
     }
-
-
 
 }

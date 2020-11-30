@@ -91,4 +91,16 @@ public class User extends Object {
         this.enable = enable;
         this.branchId=branchId;
     }
+
+    public  String toString(){
+
+        try {
+            return new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return  "";
+    }
+
+
 }

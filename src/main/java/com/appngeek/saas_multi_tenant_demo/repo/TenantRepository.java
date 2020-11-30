@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface TenantRepository extends JpaRepository<Tenant,Long> {
 
  public Tenant findByTenantName(String tenantName);
+ Tenant findByTenantId(long tenantId);
    // @Autowired
   //  final JdbcTemplate jdbcTemplate;
 

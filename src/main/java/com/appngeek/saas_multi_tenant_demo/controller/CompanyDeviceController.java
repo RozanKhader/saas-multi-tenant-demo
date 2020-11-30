@@ -42,16 +42,14 @@ public class CompanyDeviceController {
             @ApiResponse(code = 500, message = "Internal server Error")})
     @PostMapping
     public ResponseEntity<?> addCompanyDevice(@Valid @RequestBody CompanyDevice companyDevice, HttpServletResponse response) throws SQLException, InterruptedException, JsonProcessingException {
+
         if(companyDevice.getType().equalsIgnoreCase(User.UserType.POS.getType())){
             System.out.println(new ObjectMapper().writeValueAsString(companyDevice));
 
             TenantContext.setCurrentTenant(companyDevice.getCompanyId());
             companyDevicesService.save(companyDevice);
 
-         //   databaseSessionManager.unbindSession();
 
-          //  databaseSessionManager.bindSession();
-            //long id= roleRepository.findRoleId(companyDevice.getType());
             return  companyDevicesService.savePos(companyDevice,response);
 
         }

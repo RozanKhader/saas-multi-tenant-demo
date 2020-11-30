@@ -26,6 +26,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.appngeek.saas_multi_tenant_demo.Util.Helper.compare;
+import static com.appngeek.saas_multi_tenant_demo.Util.Helper.getSalt;
 import static com.appngeek.saas_multi_tenant_demo.Util.Helper.hashPassword;
 
 /**
@@ -39,7 +40,9 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
 
-
+    public User validateUserPos(String posId, String posPass){
+        return userRepository.validate(posId,posPass);
+    }
     public User validateUserAndPassword(String userName, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User u = userRepository.findByUsername(userName);
 
@@ -118,12 +121,7 @@ public class UserService implements UserDetailsService {
                 .collect(Collectors.toList());
     }
 
-    public static byte[] getSalt() throws NoSuchAlgorithmException {
-        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-        byte[] salt = new byte[16];
-        sr.nextBytes(salt);
-        return salt;
-    }
+
 
 
 }

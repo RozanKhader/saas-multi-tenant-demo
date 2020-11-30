@@ -2,6 +2,7 @@ package com.appngeek.saas_multi_tenant_demo.repo;
 
 import com.appngeek.saas_multi_tenant_demo.domain.tenantDomain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -23,5 +24,22 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Transactional
     @Query(value = "select MAX(device_id) FROM  user where user_type='POS'", nativeQuery = true)
     Long getMaxPosId();
+
+    @Transactional
+    @Query(value = " select * FROM  user where pos_key=?", nativeQuery = true)
+    User getByKey(String posKey);
+
+    @Transactional
+    @Modifying(clearAutomatically = true)
+    @Query(value = "update user  set user_name=?,salt= ?,password= ? where pos_key =? ", nativeQuery = true)
+    int updatePos(String name, String salt, String password, String posKey);
+
+
+    @Transactional
+    @Query(value = "SELECT * FROM user WHERE user_name= ? and  password=? ", nativeQuery = true)
+    User validate(String posId, String posPass);
+
+
+
 }
 

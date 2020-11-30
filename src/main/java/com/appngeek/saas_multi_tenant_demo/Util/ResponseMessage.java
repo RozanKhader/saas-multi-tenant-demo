@@ -107,6 +107,11 @@ public class ResponseMessage {
 
     public static final String CURRENCY_OPERATION = "CurrencyOperation Resource";
 
+    public static final String KEY_ONLY_ONE_TIME = "KEY IS VALID ONLY ONE TIME";
+    public static final String VALID_KEY = "KEY IS VALID";
+    public static final String NOT_VALID_KEY = "KEY IS NOT VALID";
+
+
 
 
 
