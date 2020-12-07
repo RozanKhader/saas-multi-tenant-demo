@@ -15,4 +15,4 @@ CREATE TABLE  if NOT EXISTS `company_device` (
    `branch_id` bigint(20) DEFAULT '1',
    `inventory_id` varchar(255) DEFAULT NULL,
    PRIMARY KEY (`id`)
- ) ENGINE=InnoDB AUTO_INCREMENT=451381947 DEFAULT CHARSET=utf8
+ ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

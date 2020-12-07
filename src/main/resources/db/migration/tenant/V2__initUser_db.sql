@@ -18,4 +18,4 @@ CREATE TABLE if not EXISTS `user` (
   UNIQUE KEY `userName` (`user_name`),
 
   KEY `device_id` (`device_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=451355296 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

@@ -20,10 +20,11 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @Table(name = "company_device")
-public class CompanyDevice {
+public class CompanyDevice extends GeneralModel {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
+    @Transient
     private long companyId;
     private String deviceName;
     @Column(columnDefinition="bigint(20) DEFAULT 1")

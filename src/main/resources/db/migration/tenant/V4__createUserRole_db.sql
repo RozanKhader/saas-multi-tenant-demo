@@ -5,6 +5,10 @@ CREATE TABLE  IF NOT  EXISTS `role` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
+INSERT INTO `role` (`id`,`name`) VALUES (1,'ROLE_USER');
+INSERT INTO `role` (`id`,`name`) VALUES (2,'ROLE_POS');
+
 CREATE TABLE IF NOT  EXISTS `users_roles` (
    `user_id` bigint(20) NOT NULL,
    `role_id` bigint(20) NOT NULL,

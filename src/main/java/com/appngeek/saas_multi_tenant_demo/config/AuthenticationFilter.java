@@ -44,7 +44,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         String path = (request).getRequestURI();
 
 
-        if (!( path.contains("/Users") || path.contains("/CompanyDevices") || path.contains("/initConnection") || path.contains("/authentication/") || path.contains("/authentication/users"))) {
+        if (!( path.contains("/Users") || path.contains("/CompanyDevices") || path.contains("/initConnection") || path.contains("/authentication") || path.contains("/authentication/users") || path.contains("/CompanyCredentials") )) {
             // 2. validate the header and check the prefix
             if (header == null) {
                 chain.doFilter(request, response);        // If not valid, go to the next filter.
@@ -60,6 +60,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
                 DecodedJWT jwt = JWT.decode(String.valueOf(token));
                 String tenantId = jwt.getSubject();
                 String roles = claims.get("roles").toString();
+                System.out.println("tenantId "+tenantId);
 
                 TenantContext.setCurrentTenant(Long.parseLong(tenantId));
                 TenantContext.setCurrentRole(roles);

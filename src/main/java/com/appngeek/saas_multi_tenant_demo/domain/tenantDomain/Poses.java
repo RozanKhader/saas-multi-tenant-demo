@@ -24,7 +24,7 @@ import javax.persistence.Id;
 @DynamicInsert
 @DynamicUpdate
 
-public class Poses {
+public class Poses extends GeneralModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,16 +35,7 @@ public class Poses {
     private  String key;
     private long deviceId;
 
-    public String toString(){
 
-
-        try {
-            return new ObjectMapper().writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return  "";
-    }
 
 
 

@@ -1,0 +1,22 @@
+CREATE TABLE `company_credentials` (
+   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+   `ccpw` varchar(255) DEFAULT NULL,
+   `ccun` varchar(255) DEFAULT NULL,
+   `companyid` varchar(255) DEFAULT NULL,
+   `company_name` varchar(255) DEFAULT NULL,
+   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   `end_of_return_note` int(11) NOT NULL,
+   `hide` tinyint(1) NOT NULL DEFAULT '0',
+   `return_note` varchar(255) DEFAULT NULL,
+   `tax` float NOT NULL,
+   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   `branch_id` bigint(20) DEFAULT '1',
+   `return_items_time` int(11) NOT NULL,
+   `text_in_document` varchar(255) DEFAULT NULL,
+   `currency_difference` double NOT NULL DEFAULT '0',
+   `currency_difference_type` varchar(255) DEFAULT NULL,
+   `currency_code` varchar(255) DEFAULT NULL,
+   `currency_symbol` varchar(255) DEFAULT NULL,
+   `country` varchar(255) DEFAULT NULL,
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
