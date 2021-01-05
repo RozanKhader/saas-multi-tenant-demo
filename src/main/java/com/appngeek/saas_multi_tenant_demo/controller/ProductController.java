@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+import java.sql.SQLException;
+
 import static com.appngeek.saas_multi_tenant_demo.Util.ResponseFormat.ResponseStatus.OK;
 import static com.appngeek.saas_multi_tenant_demo.Util.ResponseMessage.PRODUCT_LOG_TAG;
 
@@ -31,7 +33,7 @@ public class ProductController {
 
     @PostMapping
     @PreAuthorize(("@securityService.hasPrivilege('CREATE_PRODUCT')"))
-    public ResponseEntity<?> createProduct(@Valid @RequestBody Product product) throws JsonProcessingException {
+    public ResponseEntity<?> createProduct(@Valid @RequestBody Product product) throws JsonProcessingException, SQLException {
 
         return  ResponseFormat.responseMessage(PRODUCT_LOG_TAG, ResponseMessage.SUCCESS_ADDED_RESPONSE, productService.createProduct(product).toString(), OK.getStatus());
 

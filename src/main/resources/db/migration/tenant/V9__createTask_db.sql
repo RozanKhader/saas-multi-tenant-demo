@@ -18,15 +18,3 @@ CREATE TABLE `task` (
  ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 
-CREATE TRIGGER After_model_insert
-    AFTER INSERT ON products
-    FOR EACH ROW
- INSERT INTO task
- SET
-     pos_name = NEW.device_id,
-     branch_id = OLD.branch_id,
-     staus = 0,
-      tracking_id=0,
-      message_type='AddProduct',
-      created_at= NOW(),
-      updated_at= NOW();
