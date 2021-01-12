@@ -18,7 +18,7 @@ public class SyncProcedureService {
     private EntityManager entityManager;
 
 
-    public void callProcedure(Environment environment, String productId, long deviceId, long baranchId)
+    public void callProcedureCreate(Environment environment, String productId, long deviceId, long baranchId)
     {
 
         try {
@@ -47,31 +47,32 @@ public class SyncProcedureService {
 
 
     }
-    public  static void callProductProcedure(Environment environment, long companyId, long deviceId, long baranchId)
+    public   void callSyncProcedure( long deviceId, long baranchId)
     {
-        String url = environment.getProperty("spring.datasource.url");
-        String user =  environment.getProperty("spring.datasource.username");
-        String pass =  environment.getProperty("spring.datasource.password");
-
         try {
-            Connection conn = DriverManager.getConnection(url + "&user="+user+"&password="+pass);
+            StoredProcedureQuery query = entityManager.createStoredProcedureQuery("sync_pos");
+
+            //Declare the parameters in the same order
+            query.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+            query.registerStoredProcedureParameter(2, long.class, ParameterMode.IN);
+            query.registerStoredProcedureParameter(3, long.class, ParameterMode.IN);
+
+            //Pass the parameter values
+            query.setParameter(1, "task");
+            query.setParameter(2, deviceId);
+            query.setParameter(3, baranchId);
 
 
-            CallableStatement callableStatement = conn.prepareCall("{call sync_pos_product(?,?,?,?)}");
-            callableStatement.setString(1,  "task");
-            callableStatement.setLong(2,  companyId);
-
-            callableStatement.setLong(3, deviceId );
-            callableStatement.setLong(4, baranchId );
-
-            callableStatement.execute();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            //Execute query
+            query.execute();
 
 
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
     }
+
+
+}
 
     public  static void createProcedure(Environment environment)
     {

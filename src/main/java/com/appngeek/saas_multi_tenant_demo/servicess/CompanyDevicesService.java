@@ -42,7 +42,8 @@ public class CompanyDevicesService {
     private   DatabaseSessionManager databaseSessionManager;
     @Autowired
     private RoleRepository  roleRepository;
-
+    @Autowired
+    private AsyncService asyncService;
 
     public CompanyDevice save(CompanyDevice companyDevice)
     {
@@ -101,15 +102,12 @@ public class CompanyDevicesService {
         databaseSessionManager.bindSession();
         tenantKeysRepository.save(tenantKeys);
 
-/**
-        ServletOutputStream out = null;
-        try {
-            out = response.getOutputStream();
-        } catch (IOException e) {
-            System.out.println("   Exception1  " + e.getMessage());
-        }**/
 
-        // asyncClass.asyncMethodWithVoidReturnType(environment, syncProcedureService, syncMongoDataService, companyId, deviceId, branchId);
+        databaseSessionManager.unbindSession();
+        TenantContext.setCurrentTenant(companyDevice.getCompanyId());
+        databaseSessionManager.bindSession();
+
+        asyncService.asyncMethodForSyncProcedure(  deviceId, companyDevice.getBranchId());
 
         // out.write(aByteArray);
         return responseMessage(COMPANIES_DEVICE_LOG_TAG, ResponseMessage.SUCCESS_ADDED_RESPONSE, new ObjectMapper().writeValueAsString(resultUser), OK.getStatus());

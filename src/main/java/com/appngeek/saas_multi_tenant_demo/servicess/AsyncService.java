@@ -31,7 +31,7 @@ public class AsyncService {
         Date date2 = new Date();
         System.out.println("      date2  "+dateFormat.format(date2)+" \n ");
 
-        syncProcedureService.callProcedure(environment,productId, deviceId,branchId);
+        syncProcedureService.callProcedureCreate(environment,productId, deviceId,branchId);
 
            // syncMongoDataService.syncOfferData(companyId,deviceId,branchId);
 
@@ -39,7 +39,7 @@ public class AsyncService {
 
 
     @Async
-    public  void asyncProductMethodWithVoidReturnType(Environment environment, SyncProcedureService syncProcedureService , long companyId, long deviceId, long branchId) throws JsonProcessingException, SQLException {
+    public  void asyncMethodForSyncProcedure(   long deviceId, long branchId) throws JsonProcessingException, SQLException {
         System.out.println("Execute method asynchronously. "
                 + Thread.currentThread().getName());
 
@@ -48,12 +48,12 @@ public class AsyncService {
         Date date2 = new Date();
         System.out.println("      date2  "+dateFormat.format(date2)+" \n ");
 
-        syncProcedureService.callProductProcedure(environment,companyId, deviceId,branchId);
+        syncProcedureService.callSyncProcedure( deviceId,branchId);
 
 
     }
 
-
+/**
     @Async
     public  void asyncUpdaetTasStatus(Environment environment, SyncProcedureService syncProcedureService , long companyId, long deviceId, long branchId) throws JsonProcessingException, SQLException {
         System.out.println("Execute method asynchronously. "
@@ -67,5 +67,5 @@ public class AsyncService {
         syncProcedureService.callProductProcedure(environment,companyId, deviceId,branchId);
 
 
-    }
+    }**/
 }
