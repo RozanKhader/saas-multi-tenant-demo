@@ -15,7 +15,5 @@ CREATE TABLE if not EXISTS `user` (
   `user_type` varchar(255) DEFAULT NULL,
   `branch_id` bigint(20) DEFAULT '1',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `userName` (`user_name`),
-
   KEY `device_id` (`device_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

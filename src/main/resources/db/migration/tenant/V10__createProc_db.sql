@@ -4,6 +4,35 @@ DELIMITER //
 BEGIN
   DECLARE n INT DEFAULT 0;
   DECLARE i INT DEFAULT 0;
+
+  SELECT COUNT(*)
+ FROM `category` WHERE ( branch_id=branchId or branch_id=0) INTO n;
+  SET i = 0;
+
+  WHILE i < n DO
+
+  select  category_id,by_user,created_at,hide, name,branch_id  from `category` WHERE ( branch_id=branchId or branch_id=0) order by  category_id limit i, 1
+  into @category_id, @c , @e,@t,@v,@branchId;
+  set @dataVar = JSON_OBJECT('categoryId',@category_id, "byUser", @c,  'createdAt', @e ,'hide', @t,'name', @v,'branchId',@branchId );
+
+
+  set @sql_stmt = concat('insert into ', pos_table, '(data, message_type, pos_name,branch_id) VALUES (?, ?, ?,?)');
+
+
+  set @posNum=posNum;
+    set @branchId=branchId;
+  set @op = 'AddCategory';
+
+
+  prepare stmt from @sql_stmt;
+
+  execute stmt using  @dataVar,@op,@posNum,@branchId;
+
+  set i = i + 1;
+
+
+ end while;
+
   SELECT COUNT(*)
  FROM `products` WHERE ( branch_id=branchId or branch_id=0 ) INTO n;
   SET i = 0;

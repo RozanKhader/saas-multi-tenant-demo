@@ -49,7 +49,9 @@ public class TenantAwareDataSource extends AbstractRoutingDataSource {
 	protected DataSource determineTargetDataSource() {
 
 		Long tenantId = (Long) determineCurrentLookupKey();
-		if (tenantId == null)
+
+
+		if (tenantId == null || tenantId == 0)
 			return masterDataSource;
 
 		DataSource tenantDataSource = resolvedDataSources.get(tenantId);

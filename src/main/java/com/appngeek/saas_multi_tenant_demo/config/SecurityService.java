@@ -3,7 +3,7 @@ package com.appngeek.saas_multi_tenant_demo.config;
 import com.appngeek.saas_multi_tenant_demo.Util.TenantContext;
 import com.appngeek.saas_multi_tenant_demo.domain.tenantDomain.Privilege;
 import com.appngeek.saas_multi_tenant_demo.domain.tenantDomain.Role;
-import com.appngeek.saas_multi_tenant_demo.repo.RoleRepository;
+import com.appngeek.saas_multi_tenant_demo.repo.tenant.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

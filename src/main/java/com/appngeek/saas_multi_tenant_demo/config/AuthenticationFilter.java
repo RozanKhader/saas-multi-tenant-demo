@@ -1,10 +1,9 @@
 package com.appngeek.saas_multi_tenant_demo.config;
 
 import com.appngeek.saas_multi_tenant_demo.Util.TenantContext;
-import com.appngeek.saas_multi_tenant_demo.servicess.UserService;
+import com.appngeek.saas_multi_tenant_demo.servicess.tenant.UserService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;

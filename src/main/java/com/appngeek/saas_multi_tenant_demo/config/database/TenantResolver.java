@@ -34,32 +34,4 @@ public class TenantResolver {
 		}
 	}
 
-	public String findDataBaseNameByUsername(String username) {
-		if (username == null)
-			return null;
-
-		try {
-			return jdbcTemplate.queryForObject(
-					"SELECT t.database_name FROM user_tenant ut INNER JOIN tenant t on t.id = ut.tenant_id WHERE ut.user_name =  ?",
-					String.class, username);
-		} catch (EmptyResultDataAccessException e) {
-			return null;
-		}
-
-	}
-
-	public Long findTenantIdByUsername(String username) {
-		if (username == null)
-			return null;
-		try {
-			return jdbcTemplate.queryForObject(
-					"SELECT t.tenant_id FROM user_tenant ut INNER JOIN tenant t on t.id = ut.tenant_id WHERE ut.user_name =  ?", Long.class,
-					username);
-
-		} catch (EmptyResultDataAccessException e) {
-			return null;
-		}
-
-	}
-
 }

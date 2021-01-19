@@ -6,7 +6,6 @@ CREATE TABLE `products` (
    `description` varchar(255) DEFAULT NULL,
    `device_id` bigint(20) NOT NULL,
    `hide` tinyint(1) NOT NULL DEFAULT '0',
-   `name` varchar(255) DEFAULT NULL,
    `price` double DEFAULT NULL,
    `product_id` varchar(255) NOT NULL,
    `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -35,8 +34,7 @@ CREATE TABLE `products` (
    `price_with_out_tax` double DEFAULT '0',
    `price_with_tax` double DEFAULT '0',
    PRIMARY KEY (`id`),
-   UNIQUE KEY `u` (`product_id`,`branch_id`),
-   UNIQUE KEY `productUniqueSku` (`sku`,`branch_id`),
-   UNIQUE KEY `productUniqueName` (`branch_id`,`product_code`),
    KEY `index5` (`device_id`)
  ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+INSERT INTO `products` (`bar_code`,`cost_price`,`description`,`device_id`,`hide`,`price`,`product_id`,`with_point_system`,`with_pos`,`with_tax`,`display_name`,`in_stock`,`manage_stock`,`regular_price`,`sale_price`,`sku`,`status`,`stock_quantity`,`branch_id`,`by_employee`,`category_id`,`unit`,`weight`,`product_code`,`offer_id`,`last_cost_price_inventory`,`manual_cost_price`,`with_serial_number`,`currency_type`,`price_with_out_tax`,`price_with_tax`) VALUES ('0',0,'general',0,0,0,'-1',0,0,1,'general',0,0,0,0,'0','ACTIVE',0,0,NULL,1,'QUANTITY',0,'general',NULL,0,0,0,'ILS',0,0);

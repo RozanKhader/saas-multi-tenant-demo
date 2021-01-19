@@ -1,5 +1,6 @@
 package com.appngeek.saas_multi_tenant_demo.servicess;
 
+import com.appngeek.saas_multi_tenant_demo.servicess.tenant.SyncProcedureService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -16,7 +17,7 @@ import java.util.Date;
  */
 
 @Service
-public class AsyncService {
+public class  AsyncService {
     @Autowired
     Environment environment;
     @Autowired
@@ -31,7 +32,7 @@ public class AsyncService {
         Date date2 = new Date();
         System.out.println("      date2  "+dateFormat.format(date2)+" \n ");
 
-        syncProcedureService.callProcedureCreate(environment,productId, deviceId,branchId);
+        syncProcedureService.callProcedureCreate(productId, deviceId,branchId);
 
            // syncMongoDataService.syncOfferData(companyId,deviceId,branchId);
 

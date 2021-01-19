@@ -3,12 +3,11 @@ package com.appngeek.saas_multi_tenant_demo.config;
 
 import com.appngeek.saas_multi_tenant_demo.domain.Tokens;
 import com.appngeek.saas_multi_tenant_demo.domain.tenantDomain.User;
-import com.appngeek.saas_multi_tenant_demo.repo.UserRepository;
+import com.appngeek.saas_multi_tenant_demo.repo.tenant.UserRepository;
 import com.appngeek.saas_multi_tenant_demo.Util.TenantContext;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Iterables;
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;

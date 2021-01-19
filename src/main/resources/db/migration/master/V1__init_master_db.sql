@@ -16,3 +16,6 @@ CREATE TABLE IF NOT EXISTS `user_tenant` (
   KEY `FK_tenant_id` (`tenant_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `tenant` (`tenant_id`,`database_name`,`enabled`,`tenant_name`) VALUES (0,'master',true,'master');
+
+
